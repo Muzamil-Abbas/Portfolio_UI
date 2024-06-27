@@ -25,25 +25,28 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <section className=" py-7 mt-12 bg-white min-h-screen flex items-center">
+    <section className=" py-16 mt-4 bg-white min-h-80 flex items-center max-md:mb-20">
       <div className="container mx-auto px-4 md:px-16 lg:px-24 xl:px-52">
-        <h2 className="text-3xl font-bold text-center mb-4">Contact Us</h2>
+        <h2 className="text-3xl font-bold text-center mb-3 ">Contact Us</h2>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-2xl mx-auto bg-gray-50 p-6 rounded-lg"
+          className="max-w-xl mx-auto bg-slate-300 p-4 rounded-lg"
         >
           {/* Name Field */}
-          <div className="form-group mb-6">
+          <div className="form-group mb-2">
             <label
               htmlFor="name"
-              className="block text-lg font-medium text-gray-700 mb-2"
+              className="block text-lg font-medium text-gray-700 "
             >
               Name
             </label>
             <InputText
               id="name"
+              placeholder="Enter your name"
               {...register("name", { required: "Name is required" })}
-              className={`p-inputtext w-full ${errors.name ? "p-invalid" : ""}`}
+              className={`p-inputtext p-2 w-full h-10 ${
+                errors.name ? "p-invalid" : ""
+              }`}
             />
             {errors.name && (
               <span className="text-red-500">{errors.name.message}</span>
@@ -51,15 +54,16 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Email Field */}
-          <div className="form-group mb-6">
+          <div className="form-group">
             <label
               htmlFor="email"
-              className="block text-lg font-medium text-gray-700 mb-2"
+              className="block text-lg font-medium text-gray-700  "
             >
               Email
             </label>
             <InputText
               id="email"
+              placeholder="Enter your email"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -67,7 +71,7 @@ const ContactPage: React.FC = () => {
                   message: "Invalid email address",
                 },
               })}
-              className={`p-inputtext w-full ${
+              className={`p-inputtext p-2 w-full h-10 ${
                 errors.email ? "p-invalid" : ""
               }`}
             />
@@ -77,7 +81,7 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Message Field */}
-          <div className="form-group mb-6">
+          <div className="form-group mb-3">
             <label
               htmlFor="message"
               className="block text-lg font-medium text-gray-700 mb-2"
@@ -86,9 +90,10 @@ const ContactPage: React.FC = () => {
             </label>
             <InputTextarea
               id="message"
+              placeholder="Enter your message"
               {...register("message", { required: "Message is required" })}
-              rows={5}
-              className={`p-inputtextarea w-full ${
+              rows={7}
+              className={`p-inputtextarea p-2 w-full ${
                 errors.message ? "p-invalid" : ""
               }`}
             />
